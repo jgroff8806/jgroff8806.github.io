@@ -4,29 +4,28 @@ var pkg = require('./package.json');
 
 // Copy third party libraries from /node_modules into /vendor
 gulp.task('vendor', function() {
-
   // Bootstrap
-  gulp.src([
+  gulp
+    .src([
       './node_modules/bootstrap/dist/**/*',
       '!./node_modules/bootstrap/dist/css/bootstrap-grid*',
       '!./node_modules/bootstrap/dist/css/bootstrap-reboot*'
     ])
-    .pipe(gulp.dest('./vendor/bootstrap'))
+    .pipe(gulp.dest('./vendor/bootstrap'));
 
   // jQuery
-  gulp.src([
+  gulp
+    .src([
       './node_modules/jquery/dist/*',
       '!./node_modules/jquery/dist/core.js'
     ])
-    .pipe(gulp.dest('./vendor/jquery'))
+    .pipe(gulp.dest('./vendor/jquery'));
 
   // jQuery Easing
-  gulp.src([
-      'node_modules/jquery.easing/*.js'
-    ])
-    .pipe(gulp.dest('vendor/jquery-easing'))
-
-})
+  gulp
+    .src(['node_modules/jquery.easing/*.js'])
+    .pipe(gulp.dest('vendor/jquery-easing'));
+});
 
 // Default task
 gulp.task('default', ['vendor']);
@@ -35,7 +34,7 @@ gulp.task('default', ['vendor']);
 gulp.task('browserSync', function() {
   browserSync.init({
     server: {
-      baseDir: "./"
+      baseDir: './'
     }
   });
 });
