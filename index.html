@@ -15,6 +15,7 @@
 
   <!-- Custom styles for this template -->
   <link href="css/scrolling-nav.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
 </head>
 
@@ -46,7 +47,8 @@
 
   <header class="bg-primary text-white">
     <div class="container text-center">
-      <h1>Jason Groff</h1>
+      <img src="static/images/social-image.jpg" class="img-social" alt="Social Image" />
+      <h1 class="header-name">Jason Groff</h1>
       <p class="lead">Web Developer</p>
     </div>
   </header>
@@ -55,15 +57,12 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h2>About</h2>
-          <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a
-            boilerplate or starting point for you own landing page designs! This template features:</p>
-          <ul>
-            <li>Clickable nav links that smooth scroll to page sections</li>
-            <li>Responsive behavior when clicking nav links perfect for a one page website</li>
-            <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
-            <li>Minimal custom CSS so you are free to explore your own unique design options</li>
-          </ul>
+          <h2 class="about-header">About Me</h2>
+          <p class="lead">I am an aspiring Front-End Web Developer living in Grain Valley, Missouri. I graduated from Metropolitan Community
+            College with an Associate of Applied Science degree in Computer Science with an emphasis on Web Technologies.
+            I enjoy learning the ins and outs of web development and seeing my ideas come to life in a responsive and clean
+            design.
+          </p>
         </div>
       </div>
     </div>
@@ -73,9 +72,54 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h2>Portfolio</h2>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus
-            ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
+          <h2 class="portfolio-header">Portfolio</h2>
+          <div class="row">
+            <div class="col-lg-4 col-sm-6 portfolio-item">
+              <div class="card h-100">
+                <a href="https://jgroff8806.github.io/Google-Homepage/">
+                  <img class="card-img-top" src="static/images/google-homepage-capture.png" alt="Google Homepage Project">
+                </a>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <a href="https://jgroff8806.github.io/Google-Homepage/">The Odin Project</a>
+                  </h4>
+                  <p class="card-text">For this project I was tasked with recreating the Google homepage to the closest resemblance as I could
+                    get it using CSS styling.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 portfolio-item">
+              <div class="card h-100">
+                <a href="https://jgroff8806.github.io/tribute-page/">
+                  <img class="card-img-top" src="static/images/day9-tribute-capture.png" alt="Day[9] Tribute Page">
+                </a>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <a href="https://jgroff8806.github.io/tribute-page/">Tribute Project</a>
+                  </h4>
+                  <p class="card-text">Following the FreeCodeCamp Front-End Development track, one of the projects was to create a tribute page
+                    and utilize proper CSS styling as well as some Bootstrap properties.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 portfolio-item">
+              <div class="card h-100">
+                <a href="https://jgroff8806.github.io/fish-website/">
+                  <img class="card-img-top" src="static/images/fish-website-capture.png" alt="Slice of the Ocean">
+                </a>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <a href="https://jgroff8806.github.io/fish-website/">Slice of the Ocean</a>
+                  </h4>
+                  <p class="card-text">One of the first websites I created when I started learning basic HTML and CSS. Looking into updating it
+                    for HTML5 and utilizing CSS 3 properties as well as some Bootstrap functionality.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -85,9 +129,21 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h2>Contact Me</h2>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis,
-            id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+          <h2 class="contact-header">Contact Me</h2>
+          <div class="contact-container">
+            <form action="">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="firstname" placeholder="Your name">
+
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lastname" placeholder="Your last name">
+
+              <label for="subject">Comment</label>
+              <textarea id="comment" name="comment" placeholder="Write your comments here" style="height: 200px"></textarea>
+
+              <input type="submit" value="Submit">
+            </form>
+          </div>
         </div>
       </div>
     </div>

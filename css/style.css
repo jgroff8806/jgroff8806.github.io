@@ -1,0 +1,57 @@
+.img-social {
+  border: 3px solid #f8f9fa;
+  border-radius: 50%;
+  width: 150px;
+  height: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.header-name {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 20px 0;
+}
+
+.about-header {
+  padding-bottom: 20px;
+}
+
+.portfolio-header {
+  padding-bottom: 20px;
+}
+
+.contact-header {
+  padding-bottom: 20px;
+}
+
+input[type='text'],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type='submit'] {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type='submit']:hover {
+  background-color: #007bff;
+}
+
+.contact-container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
