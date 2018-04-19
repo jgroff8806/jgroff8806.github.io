@@ -1,8 +1,8 @@
 .img-social {
   border: 3px solid #f8f9fa;
   border-radius: 50%;
-  width: 150px;
-  height: auto;
+  width: 250px;
+  height: 250px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -24,7 +24,7 @@
   padding-bottom: 20px;
 }
 
-input[type='text'],
+input[type="text"],
 select,
 textarea {
   width: 100%;
@@ -37,7 +37,7 @@ textarea {
   resize: vertical;
 }
 
-input[type='submit'] {
+input[type="submit"] {
   background-color: #007bff;
   color: white;
   padding: 12px 20px;
@@ -46,7 +46,7 @@ input[type='submit'] {
   cursor: pointer;
 }
 
-input[type='submit']:hover {
+input[type="submit"]:hover {
   background-color: #007bff;
 }
 
