@@ -55,3 +55,17 @@ input[type="submit"]:hover {
   background-color: #f2f2f2;
   padding: 20px;
 }
+
+.footer a {
+  color: #70726f;
+  font-size: 20px;
+  padding: 10px;
+  border-right: 1px solid #70726f;
+  transition: all 0.5s ease;
+}
+.footer a:first-child {
+  border-left: 1px solid #70726f;
+}
+.footer a:hover {
+  color: white;
+}
