@@ -74,19 +74,3 @@ input[type="submit"]:hover {
   padding-top: 15px;
   text-align: center;
 }
-
-.fa-github:hover {
-  color: #007bff;
-}
-
-.fa-codepen:hover {
-  color: #007bff;
-}
-
-.fa-linkedin:hover {
-  color: #007bff;
-}
-
-.fa-free-code-camp:hover {
-  color: #007bff;
-}
