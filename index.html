@@ -179,7 +179,12 @@
         <div class="col-lg-8 mx-auto">
           <h2 class="contact-header">Contact Me</h2>
           <div class="contact-container">
-            <form name="contact" method="POST" data-netlify="true">
+            <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+              <p class="hidden">
+                <label>Don’t fill this out if you're human:
+                  <input name="bot-field">
+                </label>
+              </p>
               <label for="fname">First Name</label>
               <input type="text" id="fname" name="firstname" placeholder="Your name">
 
@@ -188,6 +193,8 @@
 
               <label for="subject">Comment</label>
               <textarea id="comment" name="comment" placeholder="Write your comments here" style="height: 200px"></textarea>
+              <!-- Netlify recaptcha -->
+              <div data-netlify-recaptcha></div>
 
               <button type="submit">Send</button>
             </form>
