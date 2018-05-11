@@ -12,6 +12,15 @@
   margin: 20px 0;
 }
 
+.header-name:after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  padding-top: 15px;
+  border-bottom: 1px solid #fff;
+}
+
 .about-header {
   padding-bottom: 20px;
 }
