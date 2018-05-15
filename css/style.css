@@ -89,9 +89,18 @@ input[type="submit"]:hover {
 }
 .footer a:hover {
   color: white;
+  text-decoration: none;
 }
 
 .social-icons {
   padding-top: 15px;
   text-align: center;
+}
+
+.social-icons .avatar-icons {
+  color: #ffffff;
+}
+
+.social-icons .avatar-icons:hover {
+  color: rgba(255, 255, 255, 0.5);
 }
