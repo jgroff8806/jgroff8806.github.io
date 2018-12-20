@@ -14,17 +14,10 @@ gulp.task('vendor', function() {
     .pipe(gulp.dest('./vendor/bootstrap'));
 
   // jQuery
-  gulp
-    .src([
-      './node_modules/jquery/dist/*',
-      '!./node_modules/jquery/dist/core.js'
-    ])
-    .pipe(gulp.dest('./vendor/jquery'));
+  gulp.src(['./node_modules/jquery/dist/*', '!./node_modules/jquery/dist/core.js']).pipe(gulp.dest('./vendor/jquery'));
 
   // jQuery Easing
-  gulp
-    .src(['node_modules/jquery.easing/*.js'])
-    .pipe(gulp.dest('vendor/jquery-easing'));
+  gulp.src(['node_modules/jquery.easing/*.js']).pipe(gulp.dest('vendor/jquery-easing'));
 });
 
 // Default task

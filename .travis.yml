@@ -1,8 +1,8 @@
-sudo:          false
-language:      node_js
+sudo: false
+language: node_js
 node_js:
-  - "node"
-install:       npm install
+  - 'node'
+install: npm install
 script:
   - npm test
   - gulp

@@ -13,7 +13,7 @@
 }
 
 .header-name:after {
-  content: "";
+  content: '';
   display: block;
   margin: 0 auto;
   width: 50%;
@@ -37,7 +37,7 @@
   padding-bottom: 20px;
 }
 
-input[type="text"],
+input[type='text'],
 select,
 textarea {
   width: 100%;
@@ -50,7 +50,7 @@ textarea {
   resize: vertical;
 }
 
-input[type="submit"] {
+input[type='submit'] {
   background-color: #007bff;
   color: white;
   padding: 12px 20px;
@@ -59,7 +59,7 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-input[type="submit"]:hover {
+input[type='submit']:hover {
   background-color: #007bff;
 }
 
