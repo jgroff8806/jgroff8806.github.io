@@ -1,293 +1,645 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Personal Website" />
-    <meta name="author" content="Jason Groff" />
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jason Groff — Software Developer specializing in Ruby on Rails and DevOps." />
+  <meta name="author" content="Jason Groff" />
+  <title>Jason Groff · Software Developer</title>
 
-    <title>Jason Groff</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="static/images/favicon.ico" />
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Fontawesome icons -->
-    <script defer src="static/fontawesome-all.js"></script>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%230A0F1E'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='700' font-size='28' letter-spacing='-1'><tspan fill='%23F0F4FF'>J</tspan><tspan fill='%236366F1'>G</tspan></text></svg>" />
 
-    <!-- Custom styles for this template -->
-    <link href="css/scrolling-nav.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
-  </head>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  <body id="page-top">
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">JG</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-            </li>
-          </ul>
+  <!-- Google Fonts: Space Grotesk + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy:   '#0A0F1E',
+            surface: '#111827',
+            card:   '#1E2A45',
+            accent: '#6366F1',
+            'accent-light': '#818CF8',
+            'text-primary': '#F0F4FF',
+            'text-muted':   '#94A3B8',
+          },
+          fontFamily: {
+            display: ['"Space Grotesk"', 'sans-serif'],
+            body:    ['"Inter"', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* Base */
+    body {
+      background-color: #0A0F1E;
+      color: #F0F4FF;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Glow behind hero name */
+    .hero-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(99,102,241,0.25) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      animation: pulse-glow 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+      50%       { opacity: 1;   transform: translate(-50%, -50%) scale(1.08); }
+    }
+
+    /* Nav scroll effect */
+    #main-nav {
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    #main-nav.scrolled {
+      background-color: rgba(10, 15, 30, 0.96);
+      box-shadow: 0 1px 0 rgba(99,102,241,0.2);
+      backdrop-filter: blur(12px);
+    }
+
+    /* Nav link hover underline */
+    .nav-link {
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 0; height: 2px;
+      background: #6366F1;
+      transition: width 0.25s ease;
+    }
+    .nav-link:hover::after,
+    .nav-link.active::after { width: 100%; }
+
+    /* Card glass effect */
+    .portfolio-card {
+      background: rgba(30, 42, 69, 0.6);
+      border: 1px solid rgba(99, 102, 241, 0.12);
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .portfolio-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(99, 102, 241, 0.5);
+      box-shadow: 0 12px 40px rgba(99, 102, 241, 0.18);
+    }
+
+    /* Section fade-in on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Skill badge */
+    .skill-badge {
+      background: rgba(99,102,241,0.12);
+      border: 1px solid rgba(99,102,241,0.25);
+      color: #818CF8;
+      transition: background 0.2s;
+    }
+    .skill-badge:hover { background: rgba(99,102,241,0.22); }
+
+    /* Social icon buttons */
+    .social-btn {
+      color: #94A3B8;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+    .social-btn:hover {
+      color: #818CF8;
+      transform: translateY(-3px);
+    }
+
+    /* Avatar ring */
+    .avatar-ring {
+      padding: 3px;
+      background: linear-gradient(135deg, #6366F1, #818CF8);
+      border-radius: 50%;
+    }
+
+    /* Divider */
+    .section-divider {
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg, #6366F1, #818CF8);
+      border-radius: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-glow { animation: none; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 py-4">
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="#hero" class="font-display font-bold text-xl text-text-primary tracking-tight">
+        J<span class="text-accent">G</span>
+      </a>
+
+      <!-- Desktop links -->
+      <ul class="hidden md:flex items-center gap-8 font-body text-sm font-medium text-text-muted">
+        <li><a href="#about"          class="nav-link hover:text-text-primary transition-colors">About</a></li>
+        <li><a href="#portfolio"      class="nav-link hover:text-text-primary transition-colors">Portfolio</a></li>
+        <li><a href="#certifications" class="nav-link hover:text-text-primary transition-colors">Certifications</a></li>
+        <li><a href="#contact"        class="nav-link hover:text-text-primary transition-colors">Contact</a></li>
+      </ul>
+
+      <!-- Mobile hamburger -->
+      <button id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"
+        class="md:hidden text-text-muted hover:text-text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+        <i class="fa-solid fa-bars text-lg"></i>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-navy/95 backdrop-blur-md border-t border-accent/10">
+      <ul class="flex flex-col px-6 py-4 gap-4 font-body text-sm font-medium text-text-muted">
+        <li><a href="#about"          class="mobile-link block hover:text-accent transition-colors">About</a></li>
+        <li><a href="#portfolio"      class="mobile-link block hover:text-accent transition-colors">Portfolio</a></li>
+        <li><a href="#certifications" class="mobile-link block hover:text-accent transition-colors">Certifications</a></li>
+        <li><a href="#contact"        class="mobile-link block hover:text-accent transition-colors">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="hero" class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+    <div class="hero-glow"></div>
+
+    <!-- Avatar -->
+    <div class="avatar-ring mb-8 relative z-10">
+      <div class="w-28 h-28 rounded-full overflow-hidden bg-card">
+        <img src="static/images/social-image.png" alt="Jason Groff" class="w-full h-full object-cover" />
+      </div>
+    </div>
+
+    <!-- Name & title -->
+    <div class="relative z-10">
+      <p class="font-body text-sm font-medium tracking-widest text-accent uppercase mb-3">DevOps &amp; Cloud Engineer</p>
+      <h1 class="font-display font-bold text-5xl sm:text-6xl md:text-7xl text-text-primary leading-none mb-6">
+        Jason <span class="text-accent">Groff</span>
+      </h1>
+      <p class="font-body text-text-muted text-lg max-w-md mx-auto mb-10 leading-relaxed">
+        Architecting cloud infrastructure and CI/CD pipelines on AWS &amp; Azure with a focus on scalability and reliability.
+      </p>
+
+      <!-- Social links -->
+      <div class="flex items-center justify-center gap-6 mb-12">
+        <a href="https://www.linkedin.com/in/jasongroff88/" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin text-2xl"></i></a>
+        <a href="https://github.com/jgroff8806"             class="social-btn" aria-label="GitHub"><i class="fab fa-github text-2xl"></i></a>
+        <a href="https://www.freecodecamp.org/jasongroff"   class="social-btn" aria-label="freeCodeCamp"><i class="fab fa-free-code-camp text-2xl"></i></a>
+        <a href="https://codepen.io/jgroff88/"              class="social-btn" aria-label="CodePen"><i class="fab fa-codepen text-2xl"></i></a>
+      </div>
+
+      <!-- CTA -->
+      <a href="#about"
+        class="inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white font-body font-medium text-sm px-6 py-3 rounded-full transition-colors duration-200">
+        Learn more <i class="fa-solid fa-arrow-down text-xs"></i>
+      </a>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-text-muted/40">
+      <i class="fa-solid fa-chevron-down text-sm"></i>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" class="py-24 px-6">
+    <div class="max-w-4xl mx-auto reveal">
+      <p class="font-body text-xs font-semibold tracking-widest text-accent uppercase mb-3">Who I am</p>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-4">About Me</h2>
+      <div class="section-divider mb-8"></div>
+
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        <div>
+          <p class="font-body text-text-muted leading-relaxed mb-4">
+            DevOps &amp; Cloud Engineer at
+            <a href="https://snapit.solutions/" class="text-accent-light hover:text-accent transition-colors">SnapIT Solutions</a>,
+            focused on AWS and Azure cloud infrastructure, CI/CD pipelines, and cloud-native architectures.
+            My roots are in software development — building full-stack applications with JavaScript, React, and Ruby on Rails —
+            and that foundation informs how I think about the systems and infrastructure I work on today.
+          </p>
+          <p class="font-body text-text-muted leading-relaxed">
+            I graduated from Metropolitan Community College in Kansas City, Missouri with an Associate of Applied
+            Science in Computer Science with an emphasis on Web Technologies.
+          </p>
+        </div>
+
+        <!-- Skills -->
+        <div>
+          <h3 class="font-display font-semibold text-text-primary text-sm uppercase tracking-widest mb-4">Core Skills</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-badge px-3 py-1 rounded-full text-xs font-medium">AWS</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs font-medium">Azure</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs font-medium">DevOps</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs font-medium">Docker</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs font-medium">Kubernetes</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs font-medium">CI/CD</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs font-medium">Terraform</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs font-medium">Infrastructure as Code</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs font-medium">Linux</span>
+          </div>
         </div>
       </div>
-    </nav>
+    </div>
+  </section>
 
-    <header class="bg-primary text-white">
-      <div class="container text-center">
-        <img src="static/images/social-image.png" class="img-social" alt="Social Image" />
-        <h1 class="header-name">Jason Groff</h1>
-        <p class="lead">Software Developer</p>
-        <div class="social-icons avatar">
-          <a href="https://github.com/jgroff8806" class="avatar-icons">
-            <i class="fab fa-github fa-fw fa-lg"></i>
-          </a>
-          <a href="https://codepen.io/jgroff88/" class="avatar-icons">
-            <i class="fab fa-codepen fa-fw fa-lg"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/jasongroff88/" class="avatar-icons">
-            <i class="fab fa-linkedin fa-fw fa-lg"></i>
-          </a>
-          <a href="https://www.freecodecamp.org/jgroff8806" class="avatar-icons">
-            <i class="fab fa-free-code-camp fa-fw fa-lg"></i>
-          </a>
-        </div>
+  <!-- ===================== PORTFOLIO ===================== -->
+  <section id="portfolio" class="py-24 px-6 bg-surface/50">
+    <div class="max-w-6xl mx-auto">
+      <div class="reveal mb-14">
+        <p class="font-body text-xs font-semibold tracking-widest text-accent uppercase mb-3">What I've built</p>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-4">Portfolio</h2>
+        <div class="section-divider"></div>
       </div>
-    </header>
 
-    <section id="about">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h2 class="about-header">About Me</h2>
-            <p class="lead">
-              Software Developer for
-              <a href="https://snapit.solutions/" alt="SnapIT Solutions">SnapIT Solutions</a>
-              specializing in Ruby on Rails and DevOps technologies with a proven track record to
-              deliver containerized applications and microservices that follow standard RESTful
-              practices through Continuous Integration / Continuous Deployment based environments. I
-              graduated from Metropolitan Community College in Kansas City, Missouri with an
-              Associate of Applied Science degree in Computer Science and an emphasis on Web
-              Technologies.
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Card 1 -->
+        <article class="portfolio-card rounded-xl overflow-hidden reveal">
+          <a href="https://task-tracker-jgroff8806.herokuapp.com/" class="block overflow-hidden">
+            <img src="static/images/task-tracker-capture.png" alt="Task Tracker App"
+              class="w-full h-44 object-cover transition-transform duration-500 hover:scale-105" />
+          </a>
+          <div class="p-5">
+            <h3 class="font-display font-semibold text-text-primary text-base mb-2">
+              <a href="https://task-tracker-jgroff8806.herokuapp.com/" class="hover:text-accent transition-colors">Task Tracker</a>
+            </h3>
+            <p class="font-body text-text-muted text-sm leading-relaxed">
+              Full-stack task app built with JavaScript, Express, Pug, and MongoDB. A rewarding deep-dive into Node.js back-end architecture.
             </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="portfolio" class="bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h2 class="portfolio-header">Portfolio</h2>
-            <div class="row">
-              <div class="col-lg-4 col-sm-6 portfolio-item">
-                <div class="card h-100">
-                  <a href="https://task-tracker-jgroff8806.herokuapp.com/">
-                    <img
-                      class="card-img-top"
-                      src="static/images/task-tracker-capture.png"
-                      alt="Task Tracker App"
-                    />
-                  </a>
-                  <div class="card-body">
-                    <h4 class="card-title">
-                      <a href="https://task-tracker-jgroff8806.herokuapp.com/">Task Tracker</a>
-                    </h4>
-                    <p class="card-text">
-                      This project was a challenging one to work through, but also rewarding to be
-                      able to use what I've learned utilizing JavaScript, Express, Jade / Pug, HTML,
-                      CSS, as well as MongoDB for the backend resources.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-sm-6 portfolio-item">
-                <div class="card h-100">
-                  <a href="https://jgroff8806.github.io/Google-Homepage/">
-                    <img
-                      class="card-img-top"
-                      src="static/images/google-homepage-capture.png"
-                      alt="Google Homepage Project"
-                    />
-                  </a>
-                  <div class="card-body">
-                    <h4 class="card-title">
-                      <a href="https://jgroff8806.github.io/Google-Homepage/">The Odin Project</a>
-                    </h4>
-                    <p class="card-text">
-                      For this project I was tasked with recreating the Google homepage to the
-                      closest resemblance as I could get it using CSS styling.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-sm-6 portfolio-item">
-                <div class="card h-100">
-                  <a href="https://jgroff8806.github.io/tribute-page/">
-                    <img
-                      class="card-img-top"
-                      src="static/images/day9-tribute-capture.png"
-                      alt="Day[9] Tribute Page"
-                    />
-                  </a>
-                  <div class="card-body">
-                    <h4 class="card-title">
-                      <a href="https://jgroff8806.github.io/tribute-page/">Tribute Project</a>
-                    </h4>
-                    <p class="card-text">
-                      Following the FreeCodeCamp Front-End Development track, one of the projects
-                      was to create a tribute page and utilize proper CSS styling as well as some
-                      Bootstrap properties.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-sm-6 portfolio-item">
-                <div class="card h-100">
-                  <a href="https://codepen.io/jgroff88/pen/KNYMGo">
-                    <img
-                      class="card-img-top"
-                      src="static/images/animated-loader-capture.png"
-                      alt="Animated Double Loader"
-                    />
-                  </a>
-                  <div class="card-body">
-                    <h4 class="card-title">
-                      <a href="https://codepen.io/jgroff88/pen/KNYMGo">Animated Double Loader</a>
-                    </h4>
-                    <p class="card-text">
-                      A small side project that I learned how to use the keyframes and animation
-                      properties in CSS make an animated double loader.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-sm-6 portfolio-item">
-                <div class="card h-100">
-                  <a href="https://jgroff8806.github.io/fish-website/">
-                    <img
-                      class="card-img-top"
-                      src="static/images/fish-website-capture.png"
-                      alt="Slice of the Ocean"
-                    />
-                  </a>
-                  <div class="card-body">
-                    <h4 class="card-title">
-                      <a href="https://jgroff8806.github.io/fish-website/">Slice of the Ocean</a>
-                    </h4>
-                    <p class="card-text">
-                      One of the first websites I created when I started learning basic HTML and
-                      CSS. Looking into updating it for HTML5 and utilizing CSS 3 properties as well
-                      as some Bootstrap functionality.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-sm-6 portfolio-item">
-                <div class="card h-100">
-                  <a href="https://jasongroff-royals.netlify.com/">
-                    <img
-                      class="card-img-top"
-                      src="static/images/royals-summary-capture.png"
-                      alt="Royals History Summary"
-                    />
-                  </a>
-                  <div class="card-body">
-                    <h4 class="card-title">
-                      <a href="https://jasongroff-royals.netlify.com/">Royals History Summary</a>
-                    </h4>
-                    <p class="card-text">
-                      A side project I worked on during this Web Development with JavaScript course
-                      I took through FEC & University of Central Missouri.
-                    </p>
-                  </div>
-                </div>
-              </div>
+            <div class="flex gap-2 mt-4 flex-wrap">
+              <span class="skill-badge px-2 py-0.5 rounded text-xs">JavaScript</span>
+              <span class="skill-badge px-2 py-0.5 rounded text-xs">Express</span>
+              <span class="skill-badge px-2 py-0.5 rounded text-xs">MongoDB</span>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </article>
 
-    <section id="contact">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h2 class="contact-header">Contact Me</h2>
-            <div class="contact-container">
-              <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                <p class="hidden">
-                  <label>Don’t fill this out if you're human: <input name="bot-field" /> </label>
-                </p>
-                <label for="fname">First Name</label>
-                <input type="text" id="fname" name="firstname" placeholder="Your name" />
-
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="lastname" placeholder="Your last name" />
-
-                <label for="subject">Comment</label>
-                <textarea
-                  id="comment"
-                  name="comment"
-                  placeholder="Write your comments here"
-                  style="height: 200px"
-                ></textarea>
-                <!-- Netlify recaptcha -->
-                <div data-netlify-recaptcha></div>
-
-                <button type="submit" class="btn btn-primary">Send</button>
-              </form>
+        <!-- Card 2 -->
+        <article class="portfolio-card rounded-xl overflow-hidden reveal">
+          <a href="https://jgroff8806.github.io/Google-Homepage/" class="block overflow-hidden">
+            <img src="static/images/google-homepage-capture.png" alt="Google Homepage Project"
+              class="w-full h-44 object-cover transition-transform duration-500 hover:scale-105" />
+          </a>
+          <div class="p-5">
+            <h3 class="font-display font-semibold text-text-primary text-base mb-2">
+              <a href="https://jgroff8806.github.io/Google-Homepage/" class="hover:text-accent transition-colors">The Odin Project</a>
+            </h3>
+            <p class="font-body text-text-muted text-sm leading-relaxed">
+              Pixel-perfect recreation of the Google homepage using pure HTML and CSS as part of The Odin Project curriculum.
+            </p>
+            <div class="flex gap-2 mt-4 flex-wrap">
+              <span class="skill-badge px-2 py-0.5 rounded text-xs">HTML</span>
+              <span class="skill-badge px-2 py-0.5 rounded text-xs">CSS</span>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </article>
 
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Jason Groff 
-          <script type="text/javascript">document.write(new Date().getFullYear());</script>
+        <!-- Card 3 -->
+        <article class="portfolio-card rounded-xl overflow-hidden reveal">
+          <a href="https://jgroff8806.github.io/tribute-page/" class="block overflow-hidden">
+            <img src="static/images/day9-tribute-capture.png" alt="Day[9] Tribute Page"
+              class="w-full h-44 object-cover transition-transform duration-500 hover:scale-105" />
+          </a>
+          <div class="p-5">
+            <h3 class="font-display font-semibold text-text-primary text-base mb-2">
+              <a href="https://jgroff8806.github.io/tribute-page/" class="hover:text-accent transition-colors">Tribute Project</a>
+            </h3>
+            <p class="font-body text-text-muted text-sm leading-relaxed">
+              A tribute page built for the freeCodeCamp Front-End track, practicing CSS styling and responsive Bootstrap layouts.
+            </p>
+            <div class="flex gap-2 mt-4 flex-wrap">
+              <span class="skill-badge px-2 py-0.5 rounded text-xs">HTML</span>
+              <span class="skill-badge px-2 py-0.5 rounded text-xs">CSS</span>
+              <span class="skill-badge px-2 py-0.5 rounded text-xs">Bootstrap</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="portfolio-card rounded-xl overflow-hidden reveal">
+          <a href="https://codepen.io/jgroff88/pen/KNYMGo" class="block overflow-hidden">
+            <img src="static/images/animated-loader-capture.png" alt="Animated Double Loader"
+              class="w-full h-44 object-cover transition-transform duration-500 hover:scale-105" />
+          </a>
+          <div class="p-5">
+            <h3 class="font-display font-semibold text-text-primary text-base mb-2">
+              <a href="https://codepen.io/jgroff88/pen/KNYMGo" class="hover:text-accent transition-colors">Animated Double Loader</a>
+            </h3>
+            <p class="font-body text-text-muted text-sm leading-relaxed">
+              A CSS animation experiment using keyframes to craft a satisfying double-ring loading spinner.
+            </p>
+            <div class="flex gap-2 mt-4 flex-wrap">
+              <span class="skill-badge px-2 py-0.5 rounded text-xs">CSS</span>
+              <span class="skill-badge px-2 py-0.5 rounded text-xs">Animation</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="portfolio-card rounded-xl overflow-hidden reveal">
+          <a href="https://jgroff8806.github.io/fish-website/" class="block overflow-hidden">
+            <img src="static/images/fish-website-capture.png" alt="Slice of the Ocean"
+              class="w-full h-44 object-cover transition-transform duration-500 hover:scale-105" />
+          </a>
+          <div class="p-5">
+            <h3 class="font-display font-semibold text-text-primary text-base mb-2">
+              <a href="https://jgroff8806.github.io/fish-website/" class="hover:text-accent transition-colors">Slice of the Ocean</a>
+            </h3>
+            <p class="font-body text-text-muted text-sm leading-relaxed">
+              One of the first sites I built while learning HTML and CSS — a fun aquatics site I've been meaning to update with modern practices.
+            </p>
+            <div class="flex gap-2 mt-4 flex-wrap">
+              <span class="skill-badge px-2 py-0.5 rounded text-xs">HTML</span>
+              <span class="skill-badge px-2 py-0.5 rounded text-xs">CSS</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="portfolio-card rounded-xl overflow-hidden reveal">
+          <a href="https://jasongroff-royals.netlify.com/" class="block overflow-hidden">
+            <img src="static/images/royals-summary-capture.png" alt="Royals History Summary"
+              class="w-full h-44 object-cover transition-transform duration-500 hover:scale-105" />
+          </a>
+          <div class="p-5">
+            <h3 class="font-display font-semibold text-text-primary text-base mb-2">
+              <a href="https://jasongroff-royals.netlify.com/" class="hover:text-accent transition-colors">Royals History Summary</a>
+            </h3>
+            <p class="font-body text-text-muted text-sm leading-relaxed">
+              A side project from a Web Development with JavaScript course through FEC &amp; University of Central Missouri.
+            </p>
+            <div class="flex gap-2 mt-4 flex-wrap">
+              <span class="skill-badge px-2 py-0.5 rounded text-xs">JavaScript</span>
+              <span class="skill-badge px-2 py-0.5 rounded text-xs">HTML</span>
+              <span class="skill-badge px-2 py-0.5 rounded text-xs">CSS</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CERTIFICATIONS ===================== -->
+  <section id="certifications" class="py-24 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="reveal mb-14 text-center">
+        <p class="font-body text-xs font-semibold tracking-widest text-accent uppercase mb-3">Verified credentials</p>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-4">Certifications</h2>
+        <div class="section-divider mx-auto mb-4"></div>
+        <p class="font-body text-text-muted text-sm mt-4">
+          Issued &amp; verified via <a href="https://www.credly.com/users/jason-groff.938076fc" target="_blank" rel="noopener" class="text-accent-light hover:text-accent transition-colors">Credly</a>
         </p>
-        <div class="social-icons">
-          <a href="https://github.com/jgroff8806"> <i class="fab fa-github fa-fw fa-lg"></i> </a>
-          <a href="https://codepen.io/jgroff88/"> <i class="fab fa-codepen fa-fw fa-lg"></i> </a>
-          <a href="https://www.linkedin.com/in/jasongroff88/">
-            <i class="fab fa-linkedin fa-fw fa-lg"></i>
-          </a>
-          <a href="https://www.freecodecamp.org/jgroff8806">
-            <i class="fab fa-free-code-camp fa-fw fa-lg"></i>
-          </a>
-        </div>
       </div>
-      <!-- /.container -->
-    </footer>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 justify-items-center reveal">
 
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Badge 1 -->
+        <div class="cert-badge-slot flex flex-col items-center gap-3 group">
+          <a href="https://www.credly.com/badges/bddf42fc-03c7-46ff-8320-1763befdf7fc" target="_blank" rel="noopener"
+            class="cert-badge-wrap w-32 h-32 rounded-2xl border border-accent/10 group-hover:border-accent/40 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg group-hover:shadow-accent/10 overflow-hidden bg-card flex items-center justify-center p-2">
+            <img src="https://images.credly.com/images/41c01bac-0625-49c2-9ce6-16687cefc6bd/image.png"
+              alt="Amazon Web Services and IT Fundamentals badge" class="w-full h-full object-contain" loading="lazy" />
+          </a>
+          <div class="text-center">
+            <p class="font-display font-semibold text-text-primary text-xs leading-tight">Amazon Web Services and IT Fundamentals</p>
+            <p class="font-body text-text-muted text-xs mt-0.5">SnapIT Solutions</p>
+          </div>
+        </div>
 
-    <!-- Custom JavaScript for this theme -->
-    <script src="js/scrolling-nav.js"></script>
-  </body>
+        <!-- Badge 2 — replace href, img src, and text once you have the badge ID -->
+        <div class="cert-badge-slot flex flex-col items-center gap-3 group">
+          <a href="https://www.credly.com/badges/d3bd9988-fabd-4636-b4e1-777f46addf90" target="_blank" rel="noopener"
+            class="cert-badge-wrap w-32 h-32 rounded-2xl border border-accent/10 group-hover:border-accent/40 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg group-hover:shadow-accent/10 overflow-hidden bg-card flex items-center justify-center p-2">
+            <img src="https://images.credly.com/images/8f006312-3154-45bf-a845-4a043641e83c/blob"
+              alt="AWS Partner: Technical Accredited badge" class="w-full h-full object-contain" loading="lazy" />
+          </a>
+          <div class="text-center">
+            <p class="font-display font-semibold text-text-primary text-xs leading-tight">AWS Partner: Technical Accredited</p>
+            <p class="font-body text-text-muted text-xs mt-0.5">AWS Training &amp; Certification</p>
+          </div>
+        </div>
+
+        <!-- Badge 3 -->
+        <div class="cert-badge-slot flex flex-col items-center gap-3 group">
+          <a href="https://www.credly.com/badges/814c8f30-95d9-444d-8e3e-1b1b1b20606d" target="_blank" rel="noopener"
+            class="cert-badge-wrap w-32 h-32 rounded-2xl border border-accent/10 group-hover:border-accent/40 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg group-hover:shadow-accent/10 overflow-hidden bg-card flex items-center justify-center p-2">
+            <img src="https://images.credly.com/images/635fc74c-e872-4965-9894-1f55d51e4722/blob"
+              alt="AWS Partner: GovCloud (US) Essentials badge" class="w-full h-full object-contain" loading="lazy" />
+          </a>
+          <div class="text-center">
+            <p class="font-display font-semibold text-text-primary text-xs leading-tight">AWS Partner: GovCloud (US) Essentials</p>
+            <p class="font-body text-text-muted text-xs mt-0.5">AWS Training &amp; Certification</p>
+          </div>
+        </div>
+
+        <!-- Badge 4 -->
+        <div class="cert-badge-slot flex flex-col items-center gap-3 group">
+          <a href="https://www.credly.com/badges/04e7c4c8-3f47-44cb-8b15-a153911a2cdb" target="_blank" rel="noopener"
+            class="cert-badge-wrap w-32 h-32 rounded-2xl border border-accent/10 group-hover:border-accent/40 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg group-hover:shadow-accent/10 overflow-hidden bg-card flex items-center justify-center p-2">
+            <img src="https://images.credly.com/images/1ba189ae-4afb-4c3b-ae89-f3da3c054f05/blob"
+              alt="AWS Partner: Cloud Economics Essentials badge" class="w-full h-full object-contain" loading="lazy" />
+          </a>
+          <div class="text-center">
+            <p class="font-display font-semibold text-text-primary text-xs leading-tight">AWS Partner: Cloud Economics Essentials</p>
+            <p class="font-body text-text-muted text-xs mt-0.5">AWS Training &amp; Certification</p>
+          </div>
+        </div>
+
+        <!-- Badge 5 -->
+        <div class="cert-badge-slot flex flex-col items-center gap-3 group">
+          <a href="https://www.credly.com/badges/0dffc1f1-9089-4e5b-8267-a9638b61d5ad" target="_blank" rel="noopener"
+            class="cert-badge-wrap w-32 h-32 rounded-2xl border border-accent/10 group-hover:border-accent/40 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg group-hover:shadow-accent/10 overflow-hidden bg-card flex items-center justify-center p-2">
+            <img src="https://images.credly.com/images/46ea4542-72a8-46a1-8d68-b72c4ca50820/blob"
+              alt="AWS Partner: Sales Accreditation badge" class="w-full h-full object-contain" loading="lazy" />
+          </a>
+          <div class="text-center">
+            <p class="font-display font-semibold text-text-primary text-xs leading-tight">AWS Partner: Sales Accreditation</p>
+            <p class="font-body text-text-muted text-xs mt-0.5">AWS Training &amp; Certification</p>
+          </div>
+        </div>
+
+        <!-- Badge 6 -->
+        <div class="cert-badge-slot flex flex-col items-center gap-3 group">
+          <a href="https://www.credly.com/badges/a2988dfd-4727-4ed7-8b5f-20908925b015" target="_blank" rel="noopener"
+            class="cert-badge-wrap w-32 h-32 rounded-2xl border border-accent/10 group-hover:border-accent/40 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg group-hover:shadow-accent/10 overflow-hidden bg-card flex items-center justify-center p-2">
+            <img src="https://images.credly.com/images/4e559130-eb54-4d6c-a9be-5d2ca18327b4/image.png"
+              alt="Scaled Agile SAFe badge" class="w-full h-full object-contain" loading="lazy" />
+          </a>
+          <div class="text-center">
+            <p class="font-display font-semibold text-text-primary text-xs leading-tight">Scaled Agile SAFe</p>
+            <p class="font-body text-text-muted text-xs mt-0.5">SnapIT Solutions</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Link to full Credly profile -->
+      <div class="text-center mt-12 reveal">
+        <a href="https://www.credly.com/users/jason-groff.938076fc" target="_blank" rel="noopener"
+          class="inline-flex items-center gap-2 border border-accent/30 hover:border-accent text-text-muted hover:text-accent font-body font-medium text-sm px-6 py-2.5 rounded-full transition-all duration-200">
+          View all badges on Credly <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact" class="py-24 px-6">
+    <div class="max-w-2xl mx-auto text-center reveal">
+      <p class="font-body text-xs font-semibold tracking-widest text-accent uppercase mb-3">Get in touch</p>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-4">Let's Connect</h2>
+      <div class="section-divider mx-auto mb-8"></div>
+
+      <p class="font-body text-text-muted text-lg leading-relaxed mb-12">
+        Whether you have an opportunity, a question, or just want to say hello —
+        my inbox and LinkedIn are always open.
+      </p>
+
+      <!-- Primary CTA -->
+      <a href="mailto:jgroff8806@gmail.com"
+        class="inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white font-body font-medium text-sm px-8 py-3 rounded-full transition-colors duration-200 mb-12">
+        <i class="fa-solid fa-envelope text-xs"></i> Say Hello
+      </a>
+
+      <!-- Connect links -->
+      <div class="flex justify-center">
+        <a href="https://www.linkedin.com/in/jasongroff88/"
+          class="connect-card group flex flex-col items-center gap-3 p-6 rounded-xl border border-accent/10 hover:border-accent/40 transition-all duration-300 hover:-translate-y-1 w-48">
+          <i class="fab fa-linkedin text-2xl text-text-muted group-hover:text-accent transition-colors"></i>
+          <span class="font-display font-semibold text-text-primary text-sm">LinkedIn</span>
+          <span class="font-body text-text-muted text-xs">in/jasongroff88</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="border-t border-accent/10 py-10 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      <p class="font-body text-text-muted text-sm">
+        &copy; <span id="year"></span> Jason Groff. All rights reserved.
+      </p>
+
+      <div class="flex items-center gap-5">
+        <a href="https://www.linkedin.com/in/jasongroff88/" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin text-xl"></i></a>
+        <a href="https://github.com/jgroff8806"             class="social-btn" aria-label="GitHub"><i class="fab fa-github text-xl"></i></a>
+        <a href="https://www.freecodecamp.org/jasongroff"   class="social-btn" aria-label="freeCodeCamp"><i class="fab fa-free-code-camp text-xl"></i></a>
+        <a href="https://codepen.io/jgroff88/"              class="social-btn" aria-label="CodePen"><i class="fab fa-codepen text-xl"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== JAVASCRIPT ===================== -->
+  <script>
+    // --- Dynamic copyright year ---
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // --- Nav: scroll effect + active link ---
+    const nav = document.getElementById('main-nav');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id]');
+
+    const onScroll = () => {
+      // Scrolled class
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+
+      // Active nav link — also triggers on the last section when near page bottom
+      const scrollBottom = window.scrollY + window.innerHeight;
+      const pageHeight = document.documentElement.scrollHeight;
+      const atBottom = scrollBottom >= pageHeight - 10;
+
+      let current = '';
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
+      });
+
+      // If we're at the very bottom, force the last section active
+      if (atBottom) {
+        current = sections[sections.length - 1].id;
+      }
+
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+      });
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // --- Mobile menu toggle ---
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const icon = menuToggle.querySelector('i');
+
+    menuToggle.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('hidden') === false;
+      menuToggle.setAttribute('aria-expanded', open);
+      icon.className = open ? 'fa-solid fa-xmark text-lg' : 'fa-solid fa-bars text-lg';
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuToggle.setAttribute('aria-expanded', false);
+        icon.className = 'fa-solid fa-bars text-lg';
+      });
+    });
+
+    // --- Scroll reveal ---
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  </script>
+
+</body>
 </html>
